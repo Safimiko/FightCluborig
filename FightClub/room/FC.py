@@ -17,6 +17,7 @@ class Character:
 		elif target == 4:
 			self.health -= 10
 	def attack(self,enemy):
+		print (enemy.block_part)
 		if self.target != enemy.block_part:
 			enemy.hit(self.target)
 	def choose_target(self, target):

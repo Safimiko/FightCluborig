@@ -1,57 +1,26 @@
 {% extends "base.html" %}
+{% load staticfiles %}
+{% block title%} {{ title }}{% endblock title %}
 {% block CSS %}
-
-	<style>
-	 @import url('https://fonts.googleapis.com/css?family=Indie+Flower');
-	body{
-		width: 80%;
-	}
-			.block_blue{
-				background-color: #ffb3d1;
-				background-size: 
-				border-radius: 4px;
-				color:#000000;
-				margin: 0;
-				padding: 0;
-
-			}
-			.block_blue div {
-				border-bottom: 2px solid #b30086;
-				text-shadow: 10px 10px 20px #4d0000;
-				border-right: 2px solid #b30086;
-				border-top: 2px solid #b30086;
-				font-family: 'Indie Flower', cursive;
-				font-size: 25px;
-
-			}
-			.block_blue div:first-child{
-				border-left: 2px solid #b30086;
-			}
-			p{
-				margin:0;
-				padding:0;
-			}
-			#search{
-				width: 70px;
-				background-color: #ffb3d1;
-
-
-			}
-			#search:hover{
-				color: #ffffff;
-				background-color:#ffb3ff;
-			}
-		</style>
+	<link rel="stylesheet" href="{% static 'css/mainStyleSheet.css' %}">
 {% endblock CSS %}
 {% block content %}
 	<input type="text">
-	<button id="search" type="Search" class="btn btn-success block_blue">Search!</button>
+	<button id="search" type="submit" class="btn btn-success">Search</button>
 	<br>
-	{% for room in rooms %}
+	{%for room in rooms %}
 		<div class="col-sm-3 block_blue">
-			<div class="col-sm-12" >{{ room.name }}</div>
-			<div class="col-sm-12" >{% if room.game_type == "SP" %} <p> Simple Game </p> {% else %} <p> Multigame </p> {% endif %}</div>
-			<div class="col-sm-12" >{{room.data_begin}}</div>
+			<div class="col-sm-12">{{room}}</div>
+			<div class="col-sm-12">{%if room.game_type == "SP"%} <p>Simpleplay</p> {% else %} <p>Multiplay</p> {% endif %}</div>
+			<div class="col-sm-12">{{room.data_begin}}</div>
+			
+			{% for character in characters %}
+				{% if character.room == rooms.pk %}
+					{{character}}
+				{% endif %}
+			{% endfor %}
+
 		</div>
+
 	{% endfor %}
-{% endblock content %}
+{% endblock %}

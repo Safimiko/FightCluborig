@@ -3,24 +3,23 @@
 <html lang="en">
 	<head>
 		<meta charset="UTF-8">
-	<title>document</title>
-	<!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet" href="{% static 'css/bootstrap.min.css'%}" >
-	<!-- Optional theme -->
-	<link rel="stylesheet" href="{% static 'css/bootstrap-theme.min.css'%}">
-	<!-- Latest compiled and minified JavaScript -->
-	<script src="{% static 'js/jquery-3.2.0.min.js'%}"></script>
-	<script src="{% static 'js/bootstrap.min.js'%}"></script>
-	{% block CSS %}
+		<title>{%block title %}BASE{% endblock title%}</title>
+		<link rel="stylesheet" href="{% static 'css/bootstrap.min.css'%}" >
+		<!-- Optional theme -->
+		<link rel="stylesheet" href="{% static 'css/bootstrap-theme.min.css' %}">
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="{% static 'js/jquery-3.2.0.min.js' %}"></script>
+		<script src="{% static 'js/bootstrap.min.js'%}" ></script>
+		{% block CSS %} 
 
-	{% endblock CSS %}
-</head>
-<body>
-	{% block content %}
-	
-	{% endblock content %}
-	{% block scripts %}
+		{% endblock CSS %}
+	</head>
+	<body>
+		{% block content %}
 
-	{% endblock %}
-</body>
+		{% endblock %}
+		{% block scripts %}
+
+		{% endblock %}
+	</body>
 </html>
